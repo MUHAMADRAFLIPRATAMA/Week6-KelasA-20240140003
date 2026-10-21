@@ -1,0 +1,481 @@
+
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --ink: #212121;
+  --muted: #6d7588;
+  --line: #e5e7e9;
+  --line-strong: #bfc9d9;
+
+  --green: #03ac0e;
+  --green-dark: #028a0b;
+  --green-soft: #eefaef;
+  --price: #212121;
+  --danger: #ef144a;
+  --danger-soft: #fff0f3;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --gap: 16px;
+  --shadow: 0 1px 6px rgba(141, 150, 170, 0.35);
+  --shadow-hover: 0 6px 18px rgba(141, 150, 170, 0.35);
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+h2 {
+  margin: 0 0 4px;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+code {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--green-soft);
+  color: var(--green-dark);
+  font-size: 0.85em;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(3, 172, 14, 0.4);
+  outline-offset: 2px;
+}
+
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px max(20px, 5vw);
+  background: #fff;
+  box-shadow: 0 1px 6px rgba(141, 150, 170, 0.35);
+}
+
+.site-header h1 {
+  margin: 0;
+  color: var(--green);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.site-header nav {
+  display: flex;
+  gap: 6px;
+}
+
+.site-header a {
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-header a:hover,
+.site-header a:focus-visible {
+  background: var(--green-soft);
+  color: var(--green-dark);
+}
+
+main {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 32px 20px 60px;
+}
+
+section {
+  margin-bottom: 64px;
+  scroll-margin-top: 80px;
+}
+
+/* Judul bagian dengan penanda hijau */
+section > h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+section > h2::before {
+  content: "";
+  width: 5px;
+  height: 1.3em;
+  border-radius: 3px;
+  background: var(--green);
+}
+
+.hint {
+  margin: 0 0 20px;
+  color: var(--muted);
+}
+
+footer {
+  padding: 24px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  text-align: center;
+}
+
+/* 4. Tombol
+   -------------------------------------------------------------------------- */
+button {
+  padding: 11px 20px;
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.btn-primary {
+  border: 1px solid var(--green);
+  background: var(--green);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  border-color: var(--green-dark);
+  background: var(--green-dark);
+}
+
+.btn-ghost {
+  border: 1px solid var(--green);
+  background: #fff;
+  color: var(--green);
+}
+
+.btn-ghost:hover {
+  background: var(--green-soft);
+}
+
+
+#status:empty {
+  display: none;
+}
+
+.status-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.status-box.error {
+  flex-wrap: wrap;
+  border-color: var(--danger);
+  background: var(--danger-soft);
+  color: var(--danger);
+  font-weight: 500;
+}
+
+.status-box.error .btn-ghost {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.status-box.error .btn-ghost:hover {
+  background: #fff;
+}
+
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid var(--green-soft);
+  border-top-color: var(--green);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 6. Daftar produk
+   -------------------------------------------------------------------------- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: var(--gap);
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s;
+}
+
+.product-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.product-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  background: #f3f4f5;
+}
+
+.product-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+}
+
+/* Nama maksimal 2 baris, seperti di marketplace */
+.product-name {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.product-price {
+  order: 1;
+  margin: 0;
+  color: var(--price);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.product-category {
+  order: 2;
+  align-self: flex-start;
+  margin: 0;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+/* 7. Form pendaftaran dan hasil form
+   -------------------------------------------------------------------------- */
+.form-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: start;
+  gap: 28px;
+  margin-top: 20px;
+}
+
+form,
+#form-result {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--gap);
+}
+
+label {
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  padding: 11px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #a3abbb;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(3, 172, 14, 0.15);
+  outline: none;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--green);
+}
+
+/* Status validasi */
+.field.invalid input,
+.field.invalid select,
+.field.invalid textarea {
+  border-color: var(--danger);
+  background: var(--danger-soft);
+}
+
+.field.valid input,
+.field.valid select,
+.field.valid textarea {
+  border-color: var(--green);
+}
+
+.error {
+  min-height: 1.2em;
+  margin-top: 4px;
+  color: var(--danger);
+  font-size: 0.8rem;
+}
+
+/* Penghitung karakter */
+.counter {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.counter .error {
+  margin-top: 0;
+}
+
+/* Checkbox */
+.field.check {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.field.check label {
+  margin: 0;
+  font-weight: 400;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Hasil form */
+#form-result {
+  border-color: #c5ebc8;
+  background: var(--green-soft);
+}
+
+#form-result .placeholder {
+  margin: 0;
+  color: var(--muted);
+}
+
+#form-result h3 {
+  margin: 0 0 14px;
+  color: var(--green-dark);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+#form-result dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 16px;
+  margin: 0;
+}
+
+#form-result dt {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+#form-result dd {
+  margin: 0;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+/* 8. Responsif dan aksesibilitas
+   -------------------------------------------------------------------------- */
+@media (max-width: 800px) {
+  .form-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-header {
+    justify-content: center;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  form,
+  #form-result {
+    padding: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .spinner {
+    animation-duration: 3s;
+  }
+}

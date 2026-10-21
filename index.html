@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Week 6 – Fetch API & Form DOM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Week 6: Fetch API &amp; Form DOM</h1>
+    <nav>
+      <a href="#produk">Data Produk</a>
+      <a href="#form">Form Pendaftaran</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===== BAGIAN 1: FETCH API ===== -->
+    <section id="produk" aria-labelledby="judul-produk">
+      <h2 id="judul-produk">Daftar Produk</h2>
+      <p class="hint">Data diambil dari <code>https://dummyjson.com/products</code></p>
+
+      <div id="status" role="status" aria-live="polite"></div>
+      <ul id="product-list" class="product-grid"></ul>
+    </section>
+
+    <!-- ===== BAGIAN 2: FORM ===== -->
+    <section id="form" aria-labelledby="judul-form">
+      <h2 id="judul-form">Pendaftaran Komunitas Belajar Web</h2>
+
+      <div class="form-layout">
+        <form id="register-form" novalidate>
+          <div class="field">
+            <label for="nama">Nama lengkap</label>
+            <input type="text" id="nama" name="nama" placeholder="Contoh: Budi Santoso" autocomplete="name">
+            <small class="error" id="error-nama"></small>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="nama@email.com" autocomplete="email">
+            <small class="error" id="error-email"></small>
+          </div>
+
+          <div class="field">
+            <label for="usia">Usia</label>
+            <input type="number" id="usia" name="usia" placeholder="17 – 60">
+            <small class="error" id="error-usia"></small>
+          </div>
+
+          <div class="field">
+            <label for="minat">Minat belajar</label>
+            <select id="minat" name="minat">
+              <option value="">Pilih salah satu</option>
+              <option value="Frontend">Frontend (HTML, CSS, JS)</option>
+              <option value="Backend">Backend</option>
+              <option value="UI/UX">UI/UX Design</option>
+              <option value="Data">Data &amp; AI</option>
+            </select>
+            <small class="error" id="error-minat"></small>
+          </div>
+
+          <div class="field">
+            <label for="motivasi">Motivasi bergabung</label>
+            <textarea id="motivasi" name="motivasi" rows="4" maxlength="150" placeholder="Minimal 20 karakter"></textarea>
+            <div class="counter"><small class="error" id="error-motivasi"></small><span id="counter">0 / 150</span></div>
+          </div>
+
+          <div class="field check">
+            <input type="checkbox" id="setuju" name="setuju">
+            <label for="setuju">Saya setuju mengikuti aturan komunitas</label>
+          </div>
+          <small class="error" id="error-setuju"></small>
+
+          <div class="actions">
+            <button type="submit" class="btn-primary">Daftar sekarang</button>
+            <button type="button" id="btn-reset" class="btn-ghost">Kosongkan form</button>
+          </div>
+        </form>
+
+        <aside id="form-result" aria-live="polite">
+          <p class="placeholder">Hasil pendaftaran akan tampil di sini setelah form dikirim.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>Tugas Week 6 – dikerjakan secara individu</footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/form.js"></script>
+</body>
+</html>
